@@ -35,7 +35,6 @@ jobs:
         with:
           name: build
           path: _build/  
-          retention-days: 1
       - name: test
         run: |
           chmod +x _build/factorTest
@@ -55,7 +54,6 @@ jobs:
         with:
           name: build
           path: _build/  
-          retention-days: 1
       - name: create deb files
         run: |
           cd _build/ 
