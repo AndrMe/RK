@@ -5,11 +5,13 @@
 > Created Time: Sun Aug  7 17:14:02 2016
  ************************************************************************/
 
-#include<iostream>
-#include<string>
+#include "abstrfactory.hpp"
+
 using namespace std;
 
 int main(){
+	SqlserverUser sql;
+
 	Factory* factory = new SqlserverFactory();
 //	Factory* factory = new MysqlFactory();
 	IUser* iu = factory->createUser();

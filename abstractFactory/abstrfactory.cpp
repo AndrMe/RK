@@ -1,68 +1,82 @@
 #include "abstrfactory.hpp"
 
-void SqlserverUser::insert()
-{
+
+
+IUser::~IUser(){}
+
+
+void SqlserverUser::insert(){
     cout<<"Insert user data into sqlserver"<<endl;
 }
-
-void SqlserverUser::getUser()
-{
+void SqlserverUser::getUser(){
     cout<<"Get user information from sqlserver"<<endl;
 }
-
-SqlserverUser::~SqlserverUser()
-{
+SqlserverUser::~SqlserverUser(){
 }
 
-void MysqlUser::insert()
-{
+
+void MysqlUser::insert(){
     cout<<"Insert user data into mysql"<<endl;
 }
-
-void MysqlUser::getUser()
-{
+void MysqlUser::getUser(){
     cout<<"Get user information from mysql"<<endl;
 }
-
-IDepartment::~IDepartment()
-{
+MysqlUser::~MysqlUser(){
 
 }
 
-void SqlserverDepartment::insert()
-{
+IDepartment::~IDepartment(){}
+
+
+void SqlserverDepartment::insert(){
     cout<<"Insert department information into sqlserver"<<endl;
 }
-
-void SqlserverDepartment::getDepartment()
-{
+void SqlserverDepartment::getDepartment(){
     cout<<"Get department information from sqlserver"<<endl;
 }
+SqlserverDepartment::~SqlserverDepartment(){
 
-SqlserverDepartment::~SqlserverDepartment()
-{
 }
 
-void MysqlDepartment::insert()
-{
+
+void MysqlDepartment::insert(){
     cout<<"Insert department information into mysql"<<endl;
 }
-
-void MysqlDepartment::getDepartment()
-{
+void MysqlDepartment::getDepartment(){
     cout<<"Get department information from mysql"<<endl;
 }
+MysqlDepartment::~MysqlDepartment(){
 
-MysqlDepartment::~MysqlDepartment()
-{
 }
 
-void Factory::factoryPrint()
-{
+// Abstract Factory 
+
+void Factory::factoryPrint(){
     cout<<"factory"<<endl;
 }
 
-Factory::~Factory()
-{
+Factory::~Factory(){
+
+}
+
+
+IUser* SqlserverFactory::createUser(){
+    return new SqlserverUser();
+}
+IDepartment* SqlserverFactory::createDepartment(){
+    return new SqlserverDepartment();
+}
+SqlserverFactory::~SqlserverFactory(){
+
+}
+
+
+IUser* MysqlFactory::createUser(){
+    return new MysqlUser();
+}
+IDepartment* MysqlFactory::createDepartment(){
+    return new MysqlDepartment();
+}
+MysqlFactory::~MysqlFactory(){
 
 }
