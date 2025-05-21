@@ -24,7 +24,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
-    
     steps:
       - name: checking out repository
         uses: actions/checkout@v4
@@ -41,4 +40,26 @@ jobs:
         run: |
           chmod +x _build/factorTest
           _build/factorTest
-      
+  
+  sources_and_release:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: checking out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: _build/  
+          retention-days: 1
+      - name: create deb files
+        run: |
+          cd _build/ 
+          _build/factorTest
+          mkdir _artifacts
+          cpack -G "DEB"
+          mv *.deb _artifacts
