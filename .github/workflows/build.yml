@@ -31,10 +31,6 @@ jobs:
         with:
           submodules: recursive
 
-      
-      - name: getting files
-        run: cmake -H. -B_build -DBUILD_TESTS
-
       - name: download artifacts
         uses: actions/download-artifact@v4
         with:
