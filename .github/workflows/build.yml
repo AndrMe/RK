@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: preparing building
-        run: cmake -H. -B_build -DBUILD_TESTS
+        run: cmake -H. -B_build -DBUILD_TESTS=ON
       - name: building
         run: cmake --build _build
       - name: upload artifacts
