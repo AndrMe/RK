@@ -60,5 +60,21 @@ jobs:
         run: |
           cd _build/ 
           mkdir _artifacts
-          cpacdck -G "DEB"
+          cpack -G "DEB"
           mv *.deb _artifacts
+      
+      - name: get version
+        run: |
+          version=`grep -P ".*_VERSION_.* \d" CMakeLists.txt |  sed 's/.*set(.*\(.\).\{1\}$/\1/' | sed -z 's/\n/./g' | sed 's/.$//'`
+          echo "Version=$version" >> $GITHUB_ENV
+ 
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.Version }}
+          name: Release v${{ env.Version }}
+          body: "Automated release with built library and source code."
+          files: |
+            _build/_artifacts/*
+          draft: false
+          prerelease: false
