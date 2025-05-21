@@ -24,4 +24,17 @@ int main(){
 	delete iu;
 	delete factory;
 	delete id;
+
+
+	factory = new MysqlFactory();
+	iu = factory->createUser();
+	iu->insert();
+	iu->getUser();
+	
+	id = factory->createDepartment();
+	id->insert();
+	id->getDepartment();
+	delete iu;
+	delete factory;
+	delete id;
 }
