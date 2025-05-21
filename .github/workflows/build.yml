@@ -59,7 +59,6 @@ jobs:
       - name: create deb files
         run: |
           cd _build/ 
-          _build/factorTest
           mkdir _artifacts
-          cpack -G "DEB"
+          cpacdck -G "DEB"
           mv *.deb _artifacts

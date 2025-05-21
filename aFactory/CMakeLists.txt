@@ -7,4 +7,10 @@ set(CMAKE_C_STANDARD 11 REQUIRED)
 
 add_library(aFactory abstrfactory.cpp)
 
-target_include_directories(aFactory PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(aFactory PUBLIC  ${CMAKE_CURRENT_SOURCE_DIR})
+
+install(
+    DIRECTORY .
+    DESTINATION include/
+    FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
+)
