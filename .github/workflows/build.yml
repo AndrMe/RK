@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: checking out repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
       
       - name: preparing building
         run: cmake -H. -B_build -DBUILD_TESTS=ON
@@ -26,6 +28,9 @@ jobs:
     steps:
       - name: checking out repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
       
       - name: getting files
         run: cmake -H. -B_build -DBUILD_TESTS
